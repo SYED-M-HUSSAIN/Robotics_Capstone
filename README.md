@@ -4,6 +4,10 @@
 
 This repository contains the code and documentation for our Final Year Project on Robotics, focused on developing an Autonomous Food Delivery Robot for Indoor Restaurants.
 
+
+
+![User Journey Diagram](https://github.com/SYED-M-HUSSAIN/Robotics_Capstone/blob/main/Screenshot%20from%202023-11-28%2011-27-26.png)
+
 ## System Diagrams and Descriptions
 
 ### 1. User Journey High-Level Diagram and Description
