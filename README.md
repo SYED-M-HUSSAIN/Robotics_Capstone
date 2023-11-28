@@ -27,7 +27,7 @@ This high-level user journey diagram and description aim to provide a comprehens
 
 ### 2. Robot Journey High-Level Diagram and Description
 
-![Robot Journey Diagram](path/to/robot_journey_diagram.png)
+![Robot Journey Diagram]([path/to/robot_journey_diagram.png](https://github.com/SYED-M-HUSSAIN/Robotics_Capstone/blob/main/robotjourney.png))
 
 #### Key Components:
 
