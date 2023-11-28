@@ -8,7 +8,7 @@ This repository contains the code and documentation for our Final Year Project o
 
 ### 1. User Journey High-Level Diagram and Description
 
-![User Journey Diagram](path/to/user_journey_diagram.png)
+![User Journey Diagram](Customer Journey revised.png)
 
 #### Key Components:
 
