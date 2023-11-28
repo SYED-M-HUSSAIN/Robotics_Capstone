@@ -8,7 +8,7 @@ This repository contains the code and documentation for our Final Year Project o
 
 ### 1. User Journey High-Level Diagram and Description
 
-![User Journey Diagram](Customer Journey revised.png)
+![User Journey Diagram](https://github.com/SYED-M-HUSSAIN/Robotics_Capstone/blob/main/Customer%20Journey%20revised.png)
 
 #### Key Components:
 
