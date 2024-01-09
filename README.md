@@ -52,8 +52,14 @@ Provide instructions on how to set up and run the project.
 
 ## Contributors
 
-- [Your Name](link-to-your-github-profile)
+- [Syed Muhammad Hussain]([link-to-your-github-profile](https://github.com/SYED-M-HUSSAIN))
+- [Syed Muhammad Daniyal](link-to-your-github-profile)
+- [Laiba Ahmed](link-to-your-github-profile)
+- [Ahmed Atif](link-to-your-github-profile)
+## References
 
+- https://navigation.ros.org/
+  
 ## License
 
 This project is licensed under the [License Name] - see the [LICENSE.md](LICENSE.md) file for details.
