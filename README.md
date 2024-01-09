@@ -60,7 +60,5 @@ Provide instructions on how to set up and run the project.
 
 - https://navigation.ros.org/
   
-## License
 
-This project is licensed under the [License Name] - see the [LICENSE.md](LICENSE.md) file for details.
 
