@@ -1,0 +1,985 @@
+%%
+%% This is file `sample-sigconf.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% samples.dtx  (with options: `sigconf')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% Any modified versions of this file must be renamed
+%% with new filenames distinct from sample-sigconf.tex.
+%% 
+%% For distribution of the original source see the terms
+%% for copying and modification in the file samples.dtx.
+%%               
+%% This generated file may be distributed as long as the
+%% original source files, as listed above, are part of the
+%% same distribution. (The sources need not necessarily be
+%% in the same archive or directory.)
+%%
+%% The first command in your LaTeX source must be the \documentclass command.
+\documentclass[sigconf]{acmart}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithm,algorithmic,algpseudocode}
+\usepackage{float}
+%%
+%% \BibTeX command to typeset BibTeX logo in the docs
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
+
+%% Rights management information.  This information is sent to you
+%% when you complete the rights form.  These commands have SAMPLE
+%% values in them; it is your responsibility as an author to replace
+%% the commands and values with those provided to you when you
+%% complete the rights form.
+% \setcopyright{acmcopyright}
+% \copyrightyear{2018}
+% \acmYear{2018}
+% \acmDOI{10.1145/1122445.1122456}
+
+%% These commands are for a PROCEEDINGS abstract or paper.
+% \acmConference[Woodstock '18]{Woodstock '18: ACM Symposium on Neural
+%   Gaze Detection}{June 03--05, 2018}{Woodstock, NY}
+% \acmBooktitle{Woodstock '18: ACM Symposium on Neural Gaze Detection,
+%   June 03--05, 2018, Woodstock, NY}
+% \acmPrice{15.00}
+% \acmISBN{978-1-4503-XXXX-X/18/06}
+
+
+%%
+%% Submission ID.
+%% Use this when submitting an article to a sponsored event. You'll
+%% receive a unique submission ID from the organizers
+%% of the event, and this ID should be used as the parameter to this command.
+%%\acmSubmissionID{123-A56-BU3}
+
+%%
+%% The majority of ACM publications use numbered citations and
+%% references.  The command \citestyle{authoryear} switches to the
+%% "author year" style.
+%%
+%% If you are preparing content for an event
+%% sponsored by ACM SIGGRAPH, you must use the "author year" style of
+%% citations and references.
+%% Uncommenting
+%% the next command will enable that style.
+%%\citestyle{acmauthoryear}
+
+%%
+%% end of the preamble, start of the body of the document source.
+\begin{document}
+
+%%
+%% The "title" command has an optional parameter,
+%% allowing the author to define a "short title" to be used in page headers.
+\title{Exploring the Efficiency of ROS2 Path Planners in a Dynamic Maze
+Environment}
+
+%%
+%% The "author" command and its associated commands are used to define
+%% the authors and their affiliations.
+%% Of note is the shared affiliation of the first two authors, and the
+%% "authornote" and "authornotemark" commands
+%% used to denote shared contribution to the research.
+\author{Syed Muhammad Hussain}
+\email{sh06892@st.habib.edu.pk}
+\affiliation{%
+  \institution{Habib University}
+  \streetaddress{P.O. Box 1212}
+  \city{Karachi}
+  \state{Pakistan}
+  \postcode{43017-6221}
+}
+
+\author{Syed Muhammad Daniyal}
+\email{sz06880@st.habib.edu.pk}
+\affiliation{%
+  \institution{Habib University}
+  \streetaddress{P.O. Box 1212}
+  \city{Karachi}
+  \state{Pakistan}
+  \postcode{43017-6221}
+}
+
+\author{Ahmed Atif}
+\email{ma06413@st.habib.edu.pk}
+\affiliation{%
+  \institution{Habib University}
+  \streetaddress{P.O. Box 1212}
+  \city{Karachi}
+  \state{Pakistan}
+  \postcode{43017-6221}
+}
+
+\author{Laiba Ahmed}
+\email{la06855@st.habib.edu.pk}
+\affiliation{%
+  \institution{Habib University}
+  \streetaddress{P.O. Box 1212}
+  \city{Karachi}
+  \state{Pakistan}
+  \postcode{43017-6221}
+}
+
+\author{Dr.Qasim Pasta}
+\email{qasim.pasta@sse.habib.edu.pk}
+\affiliation{%
+  \institution{Habib University}
+  \streetaddress{P.O. Box 1212}
+  \city{Karachi}
+  \state{Pakistan}
+  \postcode{43017-6221}
+}
+
+\author{Dr.Basit Memon}
+\email{basit.memon@sse.habib.edu.pk}
+\affiliation{%
+  \institution{Habib University}
+  \streetaddress{P.O. Box 1212}
+  \city{Karachi}
+  \state{Pakistan}
+  \postcode{43017-6221}
+}
+
+% \author{Charles Palmer}
+% \affiliation{%
+%   \institution{Palmer Research Laboratories}
+%   \streetaddress{8600 Datapoint Drive}
+%   \city{San Antonio}
+%   \state{Texas}
+%   \postcode{78229}}
+% \email{cpalmer@prl.com}
+
+
+
+%%
+%% By default, the full list of authors will be used in the page
+%% headers. Often, this list is too long, and will overlap
+%% other information printed in the page headers. This command allows
+%% the author to define a more concise list
+%% of authors' names for this purpose.
+\renewcommand{\shortauthors}{S.M.Hussain et al.}
+
+%%
+%% The abstract is a short summary of the work to be presented in the
+%% article.
+\begin{abstract}
+A critical task in the quickly developing field of robotics is efficient path planning in dynamic environments. Within the framework of ROS2 (Robot Operating System 2), this paper gives a thorough comparative analysis of several autonomous mobile robot path planning algorithms, including A*, Dijkstra, Regulated Pure Pursuit (RPP), and Dynamic Window Approach (DWA). This research investigated the effectiveness of merging local and global path planners in a dynamic maze environment using an experimental platform built on top of ROS2. Metrics include path length, deviation from the planned trajectory, and execution time. Obtained results demonstrate the performance of these algorithms highlighting their strengths and limitations while focusing on how some combinations perform better than others in terms of accuracy, planning time, and reliability.
+\end{abstract}
+
+%%
+%% The code below is generated by the tool at http://dl.acm.org/ccs.cfm.
+%% Please copy and paste the code instead of the example below.
+%%
+
+
+%%
+%% Keywords. The author(s) should pick words that accurately describe
+%% the work being presented. Separate the keywords with commas.
+\keywords{Global and Local Path Planning, Autonomous Mobile Robot, ROS2, Comparative Analysis, A*, Dijkstra, Regulated Pure Pursuit, Dynamic-Window Approach}
+
+\maketitle
+
+\section{Introduction}
+In the evolving landscape of automation, the involvement of robots in human-centered environments is critically increasing. These autonomous machines are not just improving the way tasks are carried out in sectors such as healthcare, warehouses, etc but also signifying a paradigm shift in how tasks are approached and executed. With the current advancements in mobile robots, autonomous path planning, and navigation in structured environments that contain dynamic obstacles remain a challenge.
+
+For the smooth movement of mobile robots from one point to their destination - path planning involves two distinct yet complementary strategies: local and global path planning.
+The purpose of global path planners is to construct a route in a known environment that connects the beginning point with the destination. They use an extensive environmental map to plot a path that is usually the most efficient in terms of distance traveled or energy used. Global planners, like the Dijkstra and A* algorithms, are skilled at charting a path in a static environment with fixed barriers and a predetermined topology. Their incapacity to instantly adjust to unforeseen circumstances such as dynamic obstacles that weren't on the original map, however, is their drawback.
+On the other hand, Local Path Planners are meant to make judgments in real time and concentrate on the immediate environment. They react to unforeseen changes in the robot's immediate environment and dynamic impediments. Local planning strategies include things like the Dynamic Window Approach (DWA) algorithm. Based on sensor inputs, these planners continuously modify the robot's path to ensure safe navigation by averting collisions with objects in motion or unexpected obstacles.
+
+In this context, this paper presents a comprehensive comparative analysis of the combination of Local and Global path planners i.e A*, Dijkstra, Regulated Pure Pursuit, and Dynamic-Window approach utilizing an experimental platform for autonomous mobile robots built on the ROS2 (Robot Operating System) These algorithms have been chosen based on their widely used nature and impact in the autonomous navigation domain. The comparative analysis provides a comprehensive review of the efficiency of the combination of these algorithms based on Path Length, Deviation from Planned Trajectory, and execution time.
+
+The remainder of this paper is organized as follows. Section 2 provides a literature review on existing path planning techniques. Section 3 discusses the Key Concept of a state of the art path planning algorithms. Section 4 outlines the methodology and environment setup. Section 5 presents the results and discussion. Section 6 concludes the paper and Section 7 gives the potential future direction of this research.
+\section{Literature Review}
+
+The second generation of the Robot Operating System also known as ROS2, provides a stack of Global and Local path planning algorithms in its NAV2 framework, whose aim is to navigate the robot efficiently in different environments \cite{b14}. This paper aims to navigate the robot in a maze-like environment. To figure out which algorithm works best in this situation, the research will quantify the efficiency of Global and Local path-planning algorithms in ROS2 in the existence of static and dynamic obstacles. The literature review revolves around four distinct algorithms namely A-star and Dijktra's algorithm which are categorized into Global planners while DWA and RRT for Local planners.  
+
+Global path planners are streamlined algorithms that are responsible for establishing a detailed route for the robot from the current position to the goal. To explore the related work, Wu et al. in \cite{b1} explored a ROS-based logistics system with A-star as the Global path planning Algorithm for 20 robots to observe the multitasking path planning, efficiency, response time, and transportation speed. The results show that the algorithm works better than conventional methods, especially in managing how things are moved around. 
+
+\\
+Auh et al. in \cite{b2} utilized the A-star algorithm for efficient sequence planning in cluttered logistics container unloading, where they yield minimum system movement resulting in low cost and reduced distances. Since automation in logistics systems requires efficient use of path planning algorithms that is why most of the literature revolves around this domain. Moreover, Zhao et al. in \cite{b3} proposes an efficient Complete Coverage Path Planning (CCPP) scheme for ROS-based robots while utilizing a sub-area division and a Bidirectional A-star Algorithm for path planning which resulted in a 98\% improvement in coverage ratio. Moving on to Dijkstra's algorithm, its efficiency can be well observed in the experiment conducted by Khadr et al. in \cite{b4}. He observed efficient path planning using Dijkstra in ROS simulation to design a small indoor robot for rescue and military operations tasks. 
+
+\\
+Similarly, Pereira et al. in \cite {b5} compared Dijkstra and A-star global planners in symmetric/asymmetric environments in Gazebo and with the real robot. Both algorithms guided the robot collision-free while differing mainly in processing power. In \cite {b6}, Tüfekçi et al. evaluated NavfnROS planning algorithms which include a pack of several local and Global planners (Dijkstra and A-Star, DWA, etc) for mobile robot trajectory planning in dynamic maze environments. He observed the successful navigation of the Robot from point A to point B in all analyzed algorithms. These studies signify the importance of choosing efficient Global planners as per the dynamics of the environment.
+
+Local Planners are responsible for aiding the robot in achieving the milestones while following the global path. To explore the related work, Dai et al. in \cite{b7} improved the conventional RRT algorithm's efficiency with a 5.15\% shorter path and significant time savings (78.34\% in planning, 21.67\% in navigation) by incorporating the DWA algorithm in RRT. Similarly, Shen and Soh in \cite{b8} employed enhanced DWA to optimize omnidirectional robot navigation in confined spaces by employing a targeted sampling strategy. This modification to the DWA enhanced efficiency, ensuring successful navigation trials in space-constrained environments. In \cite{b9}, Dien et al. present a ROS-powered mobile robot with effective obstacle avoidance using the Dynamic Window Approach, demonstrating precise navigation and target reaching in flat environments. Another experiment has been performed by Rajendran et al. in \cite{b10} where he introduced a RobMAP, an efficient hybrid path-planning approach for autonomous robots in unstructured environments. It utilizes the RRT algorithm for collision-free path generation in ROS. Experimental results demonstrated RobMAP's superior navigation efficiency, precision, and coverage compared to existing strategies, achieving 92.89\% accuracy. 
+
+\\
+Wang in \cite{b11} has demonstrated a more in-depth analysis of the Algorithm's efficiencies. He tested four distinct Algorithms (A-star, Dijkstra, RRT, PRM) using the first generation of ROS. The results showed that PRM was good at planning accurately and reliably, Dijkstra was effective but might not always take the best path, A* was accurate but had some limitations, and RRT had trouble with unpredictable situations. This existing work signifies that choosing an efficient algorithm is necessary as they are like white canes for a robot that aids them in making rational and quick decisions efficiently at every step of their journey. 
+
+To address a research gap, the upcoming sections of this paper will quantitatively assess the efficiencies of ROS2 Navigation stack path planning algorithms. Specifically, the research aims to conduct a thorough comparative analysis of A-star, Dijkstra’s, DWA, and RPP Algorithms within dynamic obstacle environments. Evaluation metrics, including path length, deviation of the robot from the planned trajectory, and execution time, will be employed to provide a comprehensive understanding of each algorithm's performance.
+
+\section{Key Concepts}
+
+This section explains several concepts that are essential to understand this paper. It discusses the A-star and Dijkstra Global Planners and DWA and RPP local planners in subsequent sections. By understanding these concepts, the methodology in section 4 can be understood easily.
+
+\subsection{Global Planners}
+
+\begin{enumerate}
+    \item \textbf{A* Algorithm}\\
+The \texttt{A*} method is a well-known pathfinding technique that is widely used in mobile robot navigation to discover the best route across a two-dimensional grid or map from a starting point to an objective. Combining the advantages of heuristic techniques and Dijkstra's algorithm, \texttt{A*} effectively explores the search space while taking the projected cost from the beginning to the end. It is beneficial for exploring complicated surroundings because it uses a heuristic function, usually the Manhattan or Euclidean distance, to direct the search towards the objective. The \texttt{A*} algorithm reduces the number of cells visited by using a heuristic function that indicates the direction to the goal cell\cite{b2}. \texttt{A*} algorithm manages the open set of nodes using a priority queue. This queue prioritizes nodes based on their F score - which is the sum of the actual path cost from the start node to the current node (G score) and the heuristic estimated cost from the current node to the goal (H score).
+
+\begin{algorithm}
+\caption{A* Pathfinding Algorithm}
+\begin{algorithmic}[1]
+\REQUIRE Start node, End node, Graph
+\ENSURE Shortest path from Start node to End node
+\STATE Initialize open list with Start node
+\STATE Initialize closed list as empty
+\WHILE{open list is not empty}
+    \STATE current\_node $\leftarrow$ node from open list with the lowest F score
+    \STATE Remove current\_node from open list
+    \STATE Add current\_node to closed list
+    \IF{current\_node is End node}
+        \RETURN Construct path from Start node to End node
+    \ENDIF
+    \FOR{each neighbor of current\_node}
+        \IF{neighbor is in closed list}
+            \STATE Continue to next neighbor
+        \ENDIF
+        \STATE Calculate G, H, and F scores for neighbor
+        \IF{neighbor is not in open list}
+            \STATE Add neighbor to open list
+        \ENDIF
+    \ENDFOR
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
+
+
+
+
+
+\item \textbf{Dijkstra Algorithm}\\
+A widely used technique in computer science and mobile robotics for figuring out the shortest path between nodes in a grid network is called Dijkstra's algorithm, after the Dutch computer scientist Edsger Dijkstra. The goal of the technique is to discover the most efficient path from a defined source node to every other node in the network, which works on graphs having weighted edges that reflect costs or distances. Initially, it establishes approximate distances, utilizes a priority queue to investigate nodes progressively more apart, and keeps adjusting distance estimations till the best routes are found. Because it can find the shortest pathways in a range of situations, Dijkstra's method is essential in applications like network routing and optimization. While Dijkstra's method can be effective in a complicated environment, it is less effective when the path to the destination cell is straightforward, such as a straight line.\cite{b1}
+
+\begin{algorithm}
+\caption{Dijkstra's Shortest Path Algorithm}
+\begin{algorithmic}[1] % The [1] argument ensures line numbering
+\REQUIRE Graph with vertices $V$ and edges $E$, Source vertex $src$
+\ENSURE Shortest path distances from $src$ to all other vertices in $V$
+\STATE Initialize priority queue $Q$
+\FORALL{vertex $v \in V$}
+    \STATE $dist[v] \leftarrow \infty$
+    \STATE Add $v$ to $Q$
+\ENDFOR
+\STATE $dist[src] \leftarrow 0$
+\WHILE{$Q$ is not empty}
+    \STATE $u \leftarrow$ vertex in $Q$ with minimum $dist[u]$
+    \STATE Remove $u$ from $Q$
+    \FORALL{neighbor $v$ of $u$}
+        \STATE $alt \leftarrow dist[u] + \text{weight}(u, v)$
+        \IF{$alt < dist[v]$}
+            \STATE $dist[v] \leftarrow alt$
+        \ENDIF
+    \ENDFOR
+\ENDWHILE
+\STATE \RETURN $dist[]$
+\end{algorithmic}
+\end{algorithm}
+
+
+\end{enumerate}
+
+
+
+
+\subsection{Local Planners}
+
+\begin{enumerate}
+    \item \textbf{Regulated Pure Pursuit Algorithm (RPP)}\\
+Regulated Pure Pursuit is a mobile robot navigation algorithm that improves performance by adding further regulatory mechanisms to the Pure Pursuit method's simplicity. In Pure Pursuit, the robot is guided along a predetermined course, usually based on a lookahead distance, towards a target location. Refinements are introduced in Regulated Pure Pursuit to alleviate oscillations and overshooting. To provide smoother control, it combines lookahead adaptation with speed regulation. This method modifies the lookahead distance dependent on the robot's velocity. Regulated Pure Pursuit, which combines regulatory features with Pure Pursuit, is ideally suited for mobile robot navigation applications \cite{b15}. It alleviates some of the drawbacks of standard Pure Pursuit while offering a balance between simplicity and adaptability in a variety of environments.\\
+
+\item \textbf{Dynamic Window Approach (DWA)} \\
+In mobile robotics, the Dynamic Window Approach (DWA) is a local navigation method that allows for real-time path planning and obstacle avoidance. Using its kinematic restrictions and sensor data, this technique dynamically computes a "window" of possible velocities and rotational speeds for the robot. The program generates a collection of possible routes by taking into account the robot's dynamic capabilities, its present condition, and the world around it. Subsequently, DWA assesses these paths by employing a cost function that considers the distance to barriers, objective alignment, and motion smoothness \cite{b14}. The robot is guided through its immediate surroundings by the necessary control instructions once the trajectory with the lowest cost within the dynamically possible window is selected. The algorithm is as follows:
+
+\textbf{Step 1:} Pruning of Search space: \\ \\
+The search space of the possible velocities is reduced in three steps: \\ \\
+
+\begin{enumerate}
+    \item \underline{Circular trajectories:} The dynamic window approach considers only circular trajectories (curvatures) uniquely determined by pairs $(v, \omega)$ of translational and rotational velocities. This results in a two-dimensional velocity search space. 
+    \item \underline{Admissible Velocites:} The restriction to admissible velocities ensures that only safe trajectories are considered. A pair $(v, \omega)$ is considered admissible if the robot can stop before it reaches the closest obstacle on the corresponding curvature. 
+    \item \underline{Dynamic window:} The dynamic window restricts the admissible velocities to those that can be reached within a short time interval given the limited accelerations of the robot. 
+\end{enumerate}
+\\
+\textbf{Step 2:} Optimize (maximally) the objective function:
+\begin{equation*}
+    G(v,\omega) = \sigma(\alpha \cdot heading(v,\omega) + \beta \cdot dist(v,\omega) + \gamma \cdot vel(v,\gamma))
+\end{equation*}
+where $heading(v,\omega)$ is the measure of progress towards the goal. The $dist(v,\omega)$ is the distance to the nearest obstacle. And $vel(v,\omega)$ is the linear forward velocity of the turtlebot.
+
+\end{enumerate}
+
+\section{Methodology}
+In this methodology section, we detail the key components that form the foundation of our research on path-planning algorithms within dynamic environments. Our approach is centered around the utilization of ROS2 Navigation Stack, Gazebo simulator, Turtle Bot3, and carefully designed maze environments with dynamic obstacles. Each element contributes uniquely to the study's objective, ensuring a comprehensive evaluation of the adaptability and efficiency of NAV2 path planners.
+\subsection{ROS2}
+This research employs Robot Operating System 2 (ROS2) as a foundational framework, capitalizing on its flexible and modular design to enable seamless communication among robotic components. A specific version of ROS2 Humble is chosen for consistency, accompanied by necessary packages and dependencies. ROS2 serves as the core platform for developing and implementing path-planning algorithms using its Navigation stack (NAV2), ensuring a standardized and extensible environment. The system architecture is composed of these NAV2 integral components that collectively form the foundation for the robotic navigation system that is depicted in figure \ref{fig:nav2}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.45\textwidth]{nav2_architecture(1).png} % Adjust the width as needed
+  \caption{ROS2 Navigation Stack \cite{b14}}
+  \label{fig:nav2}
+\end{figure}
+\subsection{Environment Setup}
+In configuring the environment for this research, careful consideration has been given to key components that form the foundation for near-realistic experimentation and a comprehensive evaluation of ROS2 path-planning algorithms. The following sections provide detailed information about the setup of the simulation platform, robotic platform, maze environment, dynamic obstacles, and mapping procedures.
+\subsubsection{Gazebo}
+Serving as the simulation platform, Gazebo provides a dynamic and interactive 3D environment for realistic experimentation. Specific parameters, physics settings, and Gazebo configuration are meticulously specified to create controlled conditions for evaluating path-planning algorithms. The chosen Gazebo setup is pivotal in ensuring the reproducibility and validity of experimental results.
+
+\subsubsection{Turtle Bot 3}
+The Turtle Bot3 Waffle edition is chosen as the robotic platform for simulation due to its Lidar sensor, actuators, and kinematic properties. Widely used in the ROS ecosystem, this choice ensures an accurate representation of real-world scenarios, adding practical relevance to the study's outcomes.
+
+
+\begin{figure}[H]
+  \begin{minipage}{0.23\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot from 2024-01-20 14-09-31.png}
+    
+    \label{fig:image1}
+  \end{minipage}%
+  \begin{minipage}{0.25\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot from 2024-01-20 14-19-57.png}
+    
+    \label{fig:image2}
+  \end{minipage}
+  \caption{Turtle Bot3 Waffle}
+  \label{fig:turtlebot3}
+\end{figure}
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics[width=0.45\textwidth]{tb3_empty_world.png} % Adjust the width as needed
+%   \caption{Turtle Bot3 Waffle}
+%   \label{fig:your_label}
+% \end{figure}
+
+\subsubsection{Maze}
+Designed to challenge NAV2 path planners with dynamic obstacles, the maze environment's specifics, including layout, dimensions, and obstacle characteristics, are meticulously defined. This intentional design introduces dynamic elements, allowing for the evaluation of ROS2 path planning algorithms' adaptability to changing environmental conditions as shown in figure \ref{fig:maze}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.45\textwidth]{static.png} % Adjust the width as needed
+  \caption{Top View of the Maze}
+  \label{fig:maze}
+\end{figure}
+
+\subsubsection{Dynamic Obstacles}
+Four cubes are strategically placed within the maze, moving randomly with fixed velocity and kinematics constraints. Cube placement is designed to create a 50\% chance of encountering a moving obstacle, with cube velocity set below the turtlebot's minimum for safe navigation.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.45\textwidth]{WhatsApp Image 2024-01-20 at 6.05.04 PM.jpeg} % Adjust the width as needed
+  \caption{Dynamic Obstacles}
+  \label{fig:dynamic obstacles}
+\end{figure}
+
+
+\subsubsection{Mapping}
+For generating a Lidar-based SLAM of the environment, Nav2's Slam-Toolbox is employed. This mapping process enhances the study's ability to capture and analyze environmental features, contributing to a more comprehensive evaluation of the entire navigation system. 
+\\
+
+In the upcoming section, we will analyze prominent path planning algorithms from the NAV2 stack and present the results based on defined metrics.
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics[width=0.45\textwidth]{static.png} % Adjust the width as needed
+%   \caption{Top View of the Maze}
+%   \label{fig:your_label}
+% \end{figure}
+
+
+
+
+
+
+
+
+
+% Modifying the template --- including but not limited to: adjusting
+% margins, typeface sizes, line spacing, paragraph and list definitions,
+% and the use of the \verb|\vspace| command to manually adjust the
+% vertical spacing between elements of your work --- is not allowed.
+
+% {\bfseries Your document will be returned to you for revision if
+%   modifications are discovered.}
+
+
+\section{RESULTS AND ANALYSIS}
+
+In this section, a thorough analysis is conducted to gauge the performance of the planners. The evaluation is based on three key performance metrics:
+
+\begin{enumerate}
+    \item \textbf{Path Length}
+    \item \textbf{Deviation of Robot from Planned Trajectory}
+    \item \textbf{Execution Time}
+\end{enumerate}
+
+These metrics are employed to assess the performance of global planners, local planners, and the combined influence of both, respectively. The subsequent subsections provide detailed definitions and considerations for each of these performance metrics.
+
+\subsection{Path length}
+The path length simply calculates the length magnitude of the non-linear path taken by the robot and of the path generated by the global planner. The path length is calculated using the accumulative Euclidean distance formula:
+\begin{equation*}
+    dist_t = dist_{t-1} + \sqrt{(x_t-x_{t-1})^2 + (y_t-y_{t-1})^2} 
+\end{equation*}
+\subsection{Deviation of robot from planned trajectory}
+The calculates the mean difference of distance between robot trajectory and planned path. The equation is as follows:
+\begin{equation*}
+    dev = \frac{1}{T} \sum_{t}^{T} \sqrt{(x_{robot}(t) - x_{plan}(t))^2 + (y_{robot}(t) - y_{t-1}(t))^2} 
+\end{equation*}
+
+\subsection{Execution Time}
+The calculates the mean difference of distance between robot trajectory and planned path. The equation is as follows:
+\begin{equation*}
+    time\_taken = T
+\end{equation*}
+The analysis methodology involves conducting four repeated experiments, each representing a specific combination of a global planner and a local planner. Each experiment was repeated $10$ times to achieve a standardized result. The objective is to generate analytical data, including plots, for all these planner combinations. Subsequently, a comparative analysis is performed to deduce the most effective combination of planners and to identify the scenarios in which they perform optimally. The presented plots depict both the path taken by the robot odometry (in blue) and the path generated by the global planner (in red). Note that these plots are from one of the iteration in each experiment.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.45\textwidth]{imgs/dij_rpp.png} % Adjust the width as needed
+  \caption{Dijkstra and RPP}
+  \label{fig:your_label}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.45\textwidth]{imgs/dij_dwb.png} % Adjust the width as needed
+  \caption{Dijkstra and DWB}
+  \label{fig:6}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.45\textwidth]{imgs/Astar_rpp.png} % Adjust the width as needed
+  \caption{A* and RPP}
+  \label{fig:your_label}
+\end{figure}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.45\textwidth]{imgs/Astar_dwb.png} % Adjust the width as needed
+  \caption{A* and DWB}
+  \label{fig:8}
+\end{figure}
+
+In all the plot, what we can observe that on average most deviation happens when the turtle bot encounters a dynamic obstacle in front of it. There is a case like figure \ref{fig:6} where no significant deviation from the path is seen at all. Whereas, in Figure \ref{fig:8} we see the opposite version of figure \ref{fig:6} where the turtle bot spends a significant time being deviated from the plan.
+
+\begin{table}[H]
+  \begin{center}
+    \caption{Average Performances of all 4 experiments}
+    \label{tab:table1}
+    \begin{tabular}{|a|b|c|d|}
+    \hline
+      \textbf{Planner} & \textbf{Distance} & \textbf{Deviation} & \textbf{Time}\\
+      \hline
+      Dijkstra/RPP & 25.354 & 0.217 & 153\\
+      \hline
+      Dijkstra/DWB & 26.797 & 0.165 & 109\\
+      \hline
+      A*/RPP & 26.780 & 0.270 & 62\\
+      \hline
+      A*/DWB & 27.349 & 0.222 & 140\\
+      \hline
+    \end{tabular}
+    
+  \end{center}
+\end{table}
+
+
+% The ``\verb|acmart|'' document class requires the use of the
+% ``Libertine'' typeface family. Your \TeX\ installation should include
+% this set of packages. Please do not substitute other typefaces. The
+% ``\verb|lmodern|'' and ``\verb|ltimes|'' packages should not be used,
+% as they will override the built-in typeface families.
+
+\section{Conclusions}
+From the table \ref{tab:table1}, we can observe that on average Dijkstra takes the shortest path, while A* takes the longest path. We can also observe that the DWB performs the least deviation from the plan. Generally, the combination of A* and RPP has the shortest execution time, while Dijkstra and RPP have the highest execution time. Implying the RPP does not perform well with Dijkstra.
+
+In conclusion, there is no one holistic setting in which a particular global and local planner combination is the best. The comparative analysis discussed in this paper rather rules out specific cases where one is better than the other. The purpose of the paper is to let the readers in academia and practice know to use which combination of planners depending on what their objective performance goal is.
+% The title of your work should use capital letters appropriately -
+% \url{https://capitalizemytitle.com/} has useful rules for
+% capitalization. Use the {\verb|title|} command to define the title of
+% your work. If your work has a subtitle, define it with the
+% {\verb|subtitle|} command.  Do not insert line breaks in your title.
+
+% If your title is lengthy, you must define a short version to be used
+% in the page headers, to prevent overlapping text. The \verb|title|
+% command has a ``short title'' parameter:
+% \begin{verbatim}
+%   \title[short title]{full title}
+% \end{verbatim}
+
+\section{Future Works}
+In future work, we plan to deploy and evaluate these algorithms on the physical hardware robot currently in development. Building the whole system with Nvidia Jetson Nano as shown in figure \ref{fig:sds}. This initiative aims to bridge the gap between simulation and reality, providing valuable insights into how these algorithms perform in real-world scenarios.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{future.png} % Adjust the width as needed
+  \caption{System Level Diagram}
+  \label{fig:sds}
+\end{figure}
+
+% Each author must be defined separately for accurate metadata
+% identification. Multiple authors may share one affiliation. Authors'
+% names should not be abbreviated; use full first names wherever
+% possible. Include authors' e-mail addresses whenever possible.
+
+% Grouping authors' names or e-mail addresses, or providing an ``e-mail
+% alias,'' as shown below, is not acceptable:
+% \begin{verbatim}
+%   \author{Brooke Aster, David Mehldau}
+%   \email{dave,judy,steve@university.edu}
+%   \email{firstname.lastname@phillips.org}
+% \end{verbatim}
+
+% The \verb|authornote| and \verb|authornotemark| commands allow a note
+% to apply to multiple authors --- for example, if the first two authors
+% of an article contributed equally to the work.
+
+% If your author list is lengthy, you must define a shortened version of
+% the list of authors to be used in the page headers, to prevent
+% overlapping text. The following command should be placed just after
+% the last \verb|\author{}| definition:
+% \begin{verbatim}
+%   \renewcommand{\shortauthors}{McCartney, et al.}
+% \end{verbatim}
+% Omitting this command will force the use of a concatenated list of all
+% of the authors' names, which may result in overlapping text in the
+% page headers.
+
+% The article template's documentation, available at
+% \url{https://www.acm.org/publications/proceedings-template}, has a
+% complete explanation of these commands and tips for their effective
+% use.
+
+% Note that authors' addresses are mandatory for journal articles.
+
+% \section{Rights Information}
+
+% Authors of any work published by ACM will need to complete a rights
+% form. Depending on the kind of work, and the rights management choice
+% made by the author, this may be copyright transfer, permission,
+% license, or an OA (open access) agreement.
+
+% Regardless of the rights management choice, the author will receive a
+% copy of the completed rights form once it has been submitted. This
+% form contains \LaTeX\ commands that must be copied into the source
+% document. When the document source is compiled, these commands and
+% their parameters add formatted text to several areas of the final
+% document:
+% \begin{itemize}
+% \item the ``ACM Reference Format'' text on the first page.
+% \item the ``rights management'' text on the first page.
+% \item the conference information in the page header(s).
+% \end{itemize}
+
+% Rights information is unique to the work; if you are preparing several
+% works for an event, make sure to use the correct set of commands with
+% each of the works.
+
+% The ACM Reference Format text is required for all articles over one
+% page in length, and is optional for one-page articles (abstracts).
+
+% \section{CCS Concepts and User-Defined Keywords}
+
+% Two elements of the ``acmart'' document class provide powerful
+% taxonomic tools for you to help readers find your work in an online
+% search.
+
+% The ACM Computing Classification System ---
+% \url{https://www.acm.org/publications/class-2012} --- is a set of
+% classifiers and concepts that describe the computing
+% discipline. Authors can select entries from this classification
+% system, via \url{https://dl.acm.org/ccs/ccs.cfm}, and generate the
+% commands to be included in the \LaTeX\ source.
+
+% User-defined keywords are a comma-separated list of words and phrases
+% of the authors' choosing, providing a more flexible way of describing
+% the research being presented.
+
+% CCS concepts and user-defined keywords are required for for all
+% articles over two pages in length, and are optional for one- and
+% two-page articles (or abstracts).
+
+% \section{Sectioning Commands}
+
+% Your work should use standard \LaTeX\ sectioning commands:
+% \verb|section|, \verb|subsection|, \verb|subsubsection|, and
+% \verb|paragraph|. They should be numbered; do not remove the numbering
+% from the commands.
+
+% Simulating a sectioning command by setting the first word or words of
+% a paragraph in boldface or italicized text is {\bfseries not allowed.}
+
+% \section{Tables}
+
+% The ``\verb|acmart|'' document class includes the ``\verb|booktabs|''
+% package --- \url{https://ctan.org/pkg/booktabs} --- for preparing
+% high-quality tables.
+
+% Table captions are placed {\itshape above} the table.
+
+% Because tables cannot be split across pages, the best placement for
+% them is typically the top of the page nearest their initial cite.  To
+% ensure this proper ``floating'' placement of tables, use the
+% environment \textbf{table} to enclose the table's contents and the
+% table caption.  The contents of the table itself must go in the
+% \textbf{tabular} environment, to be aligned properly in rows and
+% columns, with the desired horizontal and vertical rules.  Again,
+% detailed instructions on \textbf{tabular} material are found in the
+% \textit{\LaTeX\ User's Guide}.
+
+% Immediately following this sentence is the point at which
+% Table~\ref{tab:freq} is included in the input file; compare the
+% placement of the table here with the table in the printed output of
+% this document.
+
+% \begin{table}
+%   \caption{Frequency of Special Characters}
+%   \label{tab:freq}
+%   \begin{tabular}{ccl}
+%     \toprule
+%     Non-English or Math&Frequency&Comments\\
+%     \midrule
+%     \O & 1 in 1,000& For Swedish names\\
+%     $\pi$ & 1 in 5& Common in math\\
+%     \$ & 4 in 5 & Used in business\\
+%     $\Psi^2_1$ & 1 in 40,000& Unexplained usage\\
+%   \bottomrule
+% \end{tabular}
+% \end{table}
+
+% To set a wider table, which takes up the whole width of the page's
+% live area, use the environment \textbf{table*} to enclose the table's
+% contents and the table caption.  As with a single-column table, this
+% wide table will ``float'' to a location deemed more
+% desirable. Immediately following this sentence is the point at which
+% Table~\ref{tab:commands} is included in the input file; again, it is
+% instructive to compare the placement of the table here with the table
+% in the printed output of this document.
+
+% \begin{table*}
+%   \caption{Some Typical Commands}
+%   \label{tab:commands}
+%   \begin{tabular}{ccl}
+%     \toprule
+%     Command &A Number & Comments\\
+%     \midrule
+%     \texttt{{\char'134}author} & 100& Author \\
+%     \texttt{{\char'134}table}& 300 & For tables\\
+%     \texttt{{\char'134}table*}& 400& For wider tables\\
+%     \bottomrule
+%   \end{tabular}
+% \end{table*}
+
+% Always use midrule to separate table header rows from data rows, and
+% use it only for this purpose. This enables assistive technologies to
+% recognise table headers and support their users in navigating tables
+% more easily.
+
+% \section{Math Equations}
+% You may want to display math equations in three distinct styles:
+% inline, numbered or non-numbered display.  Each of the three are
+% discussed in the next sections.
+
+% \subsection{Inline (In-text) Equations}
+% A formula that appears in the running text is called an inline or
+% in-text formula.  It is produced by the \textbf{math} environment,
+% which can be invoked with the usual
+% \texttt{{\char'134}begin\,\ldots{\char'134}end} construction or with
+% the short form \texttt{\$\,\ldots\$}. You can use any of the symbols
+% and structures, from $\alpha$ to $\omega$, available in
+% \LaTeX~\cite{Lamport:LaTeX}; this section will simply show a few
+% examples of in-text equations in context. Notice how this equation:
+% \begin{math}
+%   \lim_{n\rightarrow \infty}x=0
+% \end{math},
+% set here in in-line math style, looks slightly different when
+% set in display style.  (See next section).
+
+% \subsection{Display Equations}
+% A numbered display equation---one set off by vertical space from the
+% text and centered horizontally---is produced by the \textbf{equation}
+% environment. An unnumbered display equation is produced by the
+% \textbf{displaymath} environment.
+
+% Again, in either environment, you can use any of the symbols and
+% structures available in \LaTeX\@; this section will just give a couple
+% of examples of display equations in context.  First, consider the
+% equation, shown as an inline equation above:
+% \begin{equation}
+%   \lim_{n\rightarrow \infty}x=0
+% \end{equation}
+% Notice how it is formatted somewhat differently in
+% the \textbf{displaymath}
+% environment.  Now, we'll enter an unnumbered equation:
+% \begin{displaymath}
+%   \sum_{i=0}^{\infty} x + 1
+% \end{displaymath}
+% and follow it with another numbered equation:
+% \begin{equation}
+%   \sum_{i=0}^{\infty}x_i=\int_{0}^{\pi+2} f
+% \end{equation}
+% just to demonstrate \LaTeX's able handling of numbering.
+
+% \section{Figures}
+
+% The ``\verb|figure|'' environment should be used for figures. One or
+% more images can be placed within a figure. If your figure contains
+% third-party material, you must clearly identify it as such, as shown
+% in the example below.
+% \begin{figure}[h]
+%   \centering
+%   \includegraphics[width=\linewidth]{sample-franklin}
+%   \caption{1907 Franklin Model D roadster. Photograph by Harris \&
+%     Ewing, Inc. [Public domain], via Wikimedia
+%     Commons. (\url{https://goo.gl/VLCRBB}).}
+%   \Description{A woman and a girl in white dresses sit in an open car.}
+% \end{figure}
+
+% Your figures should contain a caption which describes the figure to
+% the reader.
+
+% Figure captions are placed {\itshape below} the figure.
+
+% Every figure should also have a figure description unless it is purely
+% decorative. These descriptions convey what’s in the image to someone
+% who cannot see it. They are also used by search engine crawlers for
+% indexing images, and when images cannot be loaded.
+
+% A figure description must be unformatted plain text less than 2000
+% characters long (including spaces).  {\bfseries Figure descriptions
+%   should not repeat the figure caption – their purpose is to capture
+%   important information that is not already provided in the caption or
+%   the main text of the paper.} For figures that convey important and
+% complex new information, a short text description may not be
+% adequate. More complex alternative descriptions can be placed in an
+% appendix and referenced in a short figure description. For example,
+% provide a data table capturing the information in a bar chart, or a
+% structured list representing a graph.  For additional information
+% regarding how best to write figure descriptions and why doing this is
+% so important, please see
+% \url{https://www.acm.org/publications/taps/describing-figures/}.
+
+% \subsection{The ``Teaser Figure''}
+
+% A ``teaser figure'' is an image, or set of images in one figure, that
+% are placed after all author and affiliation information, and before
+% the body of the article, spanning the page. If you wish to have such a
+% figure in your article, place the command immediately before the
+% \verb|\maketitle| command:
+% \begin{verbatim}
+%   \begin{teaserfigure}
+%     \includegraphics[width=\textwidth]{sampleteaser}
+%     \caption{figure caption}
+%     \Description{figure description}
+%   \end{teaserfigure}
+% \end{verbatim}
+
+% \section{Citations and Bibliographies}
+
+% The use of \BibTeX\ for the preparation and formatting of one's
+% references is strongly recommended. Authors' names should be complete
+% --- use full first names (``Donald E. Knuth'') not initials
+% (``D. E. Knuth'') --- and the salient identifying features of a
+% reference should be included: title, year, volume, number, pages,
+% article DOI, etc.
+
+% The bibliography is included in your source document with these two
+% commands, placed just before the \verb|\end{document}| command:
+% \begin{verbatim}
+%   \bibliographystyle{ACM-Reference-Format}
+%   \bibliography{bibfile}
+% \end{verbatim}
+% where ``\verb|bibfile|'' is the name, without the ``\verb|.bib|''
+% suffix, of the \BibTeX\ file.
+
+% Citations and references are numbered by default. A small number of
+% ACM publications have citations and references formatted in the
+% ``author year'' style; for these exceptions, please include this
+% command in the {\bfseries preamble} (before the command
+% ``\verb|\begin{document}|'') of your \LaTeX\ source:
+% \begin{verbatim}
+%   \citestyle{acmauthoryear}
+% \end{verbatim}
+
+%   Some examples.  A paginated journal article \cite{Abril07}, an
+%   enumerated journal article \cite{Cohen07}, a reference to an entire
+%   issue \cite{JCohen96}, a monograph (whole book) \cite{Kosiur01}, a
+%   monograph/whole book in a series (see 2a in spec. document)
+%   \cite{Harel79}, a divisible-book such as an anthology or compilation
+%   \cite{Editor00} followed by the same example, however we only output
+%   the series if the volume number is given \cite{Editor00a} (so
+%   Editor00a's series should NOT be present since it has no vol. no.),
+%   a chapter in a divisible book \cite{Spector90}, a chapter in a
+%   divisible book in a series \cite{Douglass98}, a multi-volume work as
+%   book \cite{Knuth97}, a couple of articles in a proceedings (of a
+%   conference, symposium, workshop for example) (paginated proceedings
+%   article) \cite{Andler79, Hagerup1993}, a proceedings article with
+%   all possible elements \cite{Smith10}, an example of an enumerated
+%   proceedings article \cite{VanGundy07}, an informally published work
+%   \cite{Harel78}, a couple of preprints \cite{Bornmann2019,
+%     AnzarootPBM14}, a doctoral dissertation \cite{Clarkson85}, a
+%   master's thesis: \cite{anisi03}, an online document / world wide web
+%   resource \cite{Thornburg01, Ablamowicz07, Poker06}, a video game
+%   (Case 1) \cite{Obama08} and (Case 2) \cite{Novak03} and \cite{Lee05}
+%   and (Case 3) a patent \cite{JoeScientist001}, work accepted for
+%   publication \cite{rous08}, 'YYYYb'-test for prolific author
+%   \cite{SaeediMEJ10} and \cite{SaeediJETC10}. Other cites might
+%   contain 'duplicate' DOI and URLs (some SIAM articles)
+%   \cite{Kirschmer:2010:AEI:1958016.1958018}. Boris / Barbara Beeton:
+%   multi-volume works as books \cite{MR781536} and \cite{MR781537}. A
+%   couple of citations with DOIs:
+%   \cite{2004:ITE:1009386.1010128,Kirschmer:2010:AEI:1958016.1958018}. Online
+%   citations: \cite{TUGInstmem, Thornburg01, CTANacmart}. Artifacts:
+%   \cite{R} and \cite{UMassCitations}.
+
+% \section{Acknowledgments}
+
+% Identification of funding sources and other support, and thanks to
+% individuals and groups that assisted in the research and the
+% preparation of the work should be included in an acknowledgment
+% section, which is placed just before the reference section in your
+% document.
+
+% This section has a special environment:
+% \begin{verbatim}
+%   \begin{acks}
+%   ...
+%   \end{acks}
+% \end{verbatim}
+% so that the information contained therein can be more easily collected
+% during the article metadata extraction phase, and to ensure
+% consistency in the spelling of the section heading.
+
+% Authors should not prepare this section as a numbered or unnumbered {\verb|\section|}; please use the ``{\verb|acks|}'' environment.
+
+% \section{Appendices}
+
+% If your work needs an appendix, add it before the
+% ``\verb|\end{document}|'' command at the conclusion of your source
+% document.
+
+% Start the appendix with the ``\verb|appendix|'' command:
+% \begin{verbatim}
+%   \appendix
+% \end{verbatim}
+% and note that in the appendix, sections are lettered, not
+% numbered. This document has two appendices, demonstrating the section
+% and subsection identification method.
+
+% \section{SIGCHI Extended Abstracts}
+
+% The ``\verb|sigchi-a|'' template style (available only in \LaTeX\ and
+% not in Word) produces a landscape-orientation formatted article, with
+% a wide left margin. Three environments are available for use with the
+% ``\verb|sigchi-a|'' template style, and produce formatted output in
+% the margin:
+% \begin{itemize}
+% \item {\verb|sidebar|}:  Place formatted text in the margin.
+% \item {\verb|marginfigure|}: Place a figure in the margin.
+% \item {\verb|margintable|}: Place a table in the margin.
+% \end{itemize}
+
+%%
+%% The acknowledgments section is defined using the "acks" environment
+%% (and NOT an unnumbered section). This ensures the proper
+%% identification of the section in the article metadata, and the
+%% consistent spelling of the heading.
+
+
+%%
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+\bibliographystyle{ACM-Reference-Format}
+\begin{thebibliography}{00}
+
+\bibitem{b1}
+Ben-Ari, M., Mondada, F. (2018). Mapping-Based Navigation. In: Elements of Robotics. Springer, Cham. https://doi.org/10.1007/978-3-319-62533-1\_10
+\bibitem{b2}
+Xiang Liu and Daoxiong Gong, "A comparative study of A-star algorithms for search and rescue in perfect maze," 2011 International Conference on Electric Information and Control Engineering, Wuhan, 2011, pp. 24-27, doi: 10.1109/ICEICE.2011.5777723.
+\bibitem{b3} 
+Wu, R. (2023). Optimization Path and Design of Intelligent Logistics Management System Based on ROS Robot. Journal of Robotics, 2023.
+\bibitem{b4} 
+Auh, E., Kim, J., Joo, Y., Park, J., Lee, G., Oh, I., ... \& Moon, H. (2024). Unloading sequence planning for autonomous robotic container-unloading system using A-star search algorithm. Engineering Science and Technology, an International Journal, 50, 101610.
+\bibitem{b5} 
+Zhao, S., \& Hwang, S. H. (2023). Complete coverage path planning scheme for autonomous navigation ROS-based robots. ICT Express.
+\bibitem{b6} 
+Khadr Sr, M. S., Beaber Sr, S. I., Said, E., Elmayyah, W. M., \& Hussein, W. M. (2021, April). Indoor path-planning for a tracked mobile robot using Dijkstra's algorithm and Ros. In Unmanned Systems Technology XXIII (Vol. 11758, pp. 211-220). SPIE.
+\bibitem{b7} 
+Ugalde Pereira, F., Medeiros de Assis Brasil, P., de Souza Leite Cuadros, M.A., Cukla, A.R., Drews Junior, P. and Tello Gamarra, D.F. 2021. Analysis of Local Trajectory Planners for Mobile Robot with Robot Operating System. IEEE Latin America Transactions. 20, 1 (Aug. 2021), 92–99.
+\bibitem{b8} 
+Tüfekçi, Z., \& Erdemir, G. (2023, June). Experimental Comparison of Global Planners for Trajectory Planning of Mobile Robots in an Unknown Environment with Dynamic Obstacles. In 2023 5th International Congress on Human-Computer Interaction, Optimization and Robotic Applications (HORA) (pp. 1-6). IEEE.
+\bibitem{b9} 
+Dai, J., Li, D., Zhao, J., \& Li, Y. (2022). Autonomous navigation of robots based on the improved informed-RRT algorithm and DWA. Journal of Robotics, 2022.
+\bibitem{b10} 
+Shen, C., \& Soh, G. S. (2023, August). Targeted Sampling DWA: A Path-Aware DWA Sampling Strategy for Omni-Directional Robots. In International Design Engineering Technical Conferences and Computers and Information in Engineering Conference (Vol. 87363, p. V008T08A061). American Society of Mechanical Engineers.
+\bibitem{b11} 
+Dien, N. D., Van Hoa, R., Van Minh, P., Van Huy, P., Van Anh, L., \& Duc, T. (2022). Research, Design and Control Mobile Robots for Intelligent Navigation Based on ROS Programming.
+\bibitem{b12} 
+Rajendran, G., Uma, V., \& O’Brien, B. (2022). Unified robot task and motion planning with extended planner using ROS simulator. Journal of King Saud University-Computer and Information Sciences, 34(9), 7468-7481.
+\bibitem{b13} 
+Wang, S. (2024, January). Comparative research on path planning algorithms for autonomous mobile robots based on ROS. In International Conference on Algorithm, Imaging Processing, and Machine Vision (AIPMV 2023) (Vol. 12969, pp. 219-224). SPIE.
+
+
+
+
+
+\bibitem{b14}
+Steven Macenski, Francisco Martin, Ruffin White, Jonatan Ginés Clavero,
+\emph{The Marathon 2: A Navigation System},
+in \emph{2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+2020.
+
+\bibitem{b15}
+S. Macenski, T. Moore, DV Lu, A. Merzlyakov, M. Ferguson,
+\emph{From the desks of ROS maintainers: A survey of modern \& capable mobile robotics algorithms in the robot operating system 2},
+\emph{Robotics and Autonomous Systems},
+2023.
+
+
+
+
+
+\end{thebibliography}
+
+
+%%
+%% If your work has an appendix, this is the place to put it.
+\appendix
+
+% \section{Research Methods}
+
+% \subsection{Part One}
+
+% Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+% malesuada, quam in pulvinar varius, metus nunc fermentum urna, id
+% sollicitudin purus odio sit amet enim. Aliquam ullamcorper eu ipsum
+% vel mollis. Curabitur quis dictum nisl. Phasellus vel semper risus, et
+% lacinia dolor. Integer ultricies commodo sem nec semper.
+
+% \subsection{Part Two}
+
+% Etiam commodo feugiat nisl pulvinar pellentesque. Etiam auctor sodales
+% ligula, non varius nibh pulvinar semper. Suspendisse nec lectus non
+% ipsum convallis congue hendrerit vitae sapien. Donec at laoreet
+% eros. Vivamus non purus placerat, scelerisque diam eu, cursus
+% ante. Etiam aliquam tortor auctor efficitur mattis.
+
+% \section{Online Resources}
+
+% Nam id fermentum dui. Suspendisse sagittis tortor a nulla mollis, in
+% pulvinar ex pretium. Sed interdum orci quis metus euismod, et sagittis
+% enim maximus. Vestibulum gravida massa ut felis suscipit
+% congue. Quisque mattis elit a risus ultrices commodo venenatis eget
+% dui. Etiam sagittis eleifend elementum.
+
+% Nam interdum magna at lectus dignissim, ac dignissim lorem
+% rhoncus. Maecenas eu arcu ac neque placerat aliquam. Nunc pulvinar
+% massa et mattis lacinia.
+
+\end{document}
+\endinput
+%%
+%% End of file `sample-sigconf.tex'.
