@@ -22,3 +22,5 @@ cap.release()
 
 # Close all OpenCV windows
 cv2.destroyAllWindows()
+
+https://chat.openai.com/share/d451e03d-3bb0-45fb-9db7-9e5e28b11305
